@@ -1,0 +1,87 @@
+# SE3 Power Price Forecast package
+# Requires: !secret eupowerprices_api_key defined in secrets.yaml
+#
+# Data source: https://api.eupowerprices.com/v1/forecasts/SE3/latest
+# Response shape (v1 schema):
+# {
+#   "area": "SE3",
+#   "timezone": "Europe/Stockholm",
+#   "generated_at_utc": "...",
+#   "forecast_start_utc": "...",
+#   "forecast_end_utc": "...",
+#   "resolution": "PT60M",
+#   "currency": "EUR",
+#   "unit": "EUR/MWh",
+#   "model_version": "price-xgb-v1",
+#   "series": [
+#     { "ts_utc": "...", "ts_local": "...", "price_eur_mwh": 77.42 },
+#     ...
+#   ]
+# }
+
+sensor:
+  - platform: rest
+    name: "SE3 Power Price Forecast"
+    unique_id: se3_power_price_forecast
+    resource: https://api.eupowerprices.com/v1/forecasts/SE3/latest
+    method: GET
+    headers:
+      X-API-Key: !secret eupowerprices_api_key
+      Content-Type: application/json
+    scan_interval: 3600
+    timeout: 15
+    value_template: >-
+      {% set series = value_json.series %}
+      {% set now_hour = utcnow().strftime('%Y-%m-%dT%H:00:00Z') %}
+      {% set match = series | selectattr('ts_utc', 'eq', now_hour) | list %}
+      {{ match[0].price_eur_mwh if match else series[0].price_eur_mwh }}
+    unit_of_measurement: "EUR/MWh"
+    state_class: measurement
+    json_attributes_path: "$"
+    json_attributes:
+      - area
+      - timezone
+      - generated_at_utc
+      - forecast_start_utc
+      - forecast_end_utc
+      - resolution
+      - currency
+      - unit
+      - model_version
+      - series
+
+template:
+  - sensor:
+      - name: "SE3 Price Next Hour"
+        unique_id: se3_price_next_hour
+        unit_of_measurement: "EUR/MWh"
+        state_class: measurement
+        state: >-
+          {% set series = state_attr('sensor.se3_power_price_forecast', 'series') %}
+          {% set next_hour = (utcnow() + timedelta(hours=1)).strftime('%Y-%m-%dT%H:00:00Z') %}
+          {% set match = series | selectattr('ts_utc', 'eq', next_hour) | list %}
+          {{ match[0].price_eur_mwh if match else 'unknown' }}
+
+      - name: "SE3 Peak Next 24h"
+        unique_id: se3_peak_next_24h
+        unit_of_measurement: "EUR/MWh"
+        state_class: measurement
+        state: >-
+          {% set series = state_attr('sensor.se3_power_price_forecast', 'series') %}
+          {% set now_hour = utcnow().strftime('%Y-%m-%dT%H:00:00Z') %}
+          {% set ts_list = series | map(attribute='ts_utc') | list %}
+          {% set start = ts_list.index(now_hour) if now_hour in ts_list else 0 %}
+          {% set window = series[start:start+24] %}
+          {{ (window | map(attribute='price_eur_mwh') | list | max) if window else 'unknown' }}
+
+      - name: "SE3 Low Next 24h"
+        unique_id: se3_low_next_24h
+        unit_of_measurement: "EUR/MWh"
+        state_class: measurement
+        state: >-
+          {% set series = state_attr('sensor.se3_power_price_forecast', 'series') %}
+          {% set now_hour = utcnow().strftime('%Y-%m-%dT%H:00:00Z') %}
+          {% set ts_list = series | map(attribute='ts_utc') | list %}
+          {% set start = ts_list.index(now_hour) if now_hour in ts_list else 0 %}
+          {% set window = series[start:start+24] %}
+          {{ (window | map(attribute='price_eur_mwh') | list | min) if window else 'unknown' }}

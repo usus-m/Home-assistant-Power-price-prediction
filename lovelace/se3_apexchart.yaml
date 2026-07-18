@@ -1,0 +1,85 @@
+# Requires the apexcharts-card custom card (via HACS):
+# https://github.com/RomRider/apexcharts-card
+#
+# Add as a manual card in a Lovelace dashboard.
+type: custom:apexcharts-card
+graph_span: 14d
+span:
+  start: day
+experimental:
+  color_threshold: true
+header:
+  title: Nordpool SE3 Spot & Prediction ¢/kWh
+  show: true
+  show_states: true
+  colorize_states: true
+apex_config:
+  grid:
+    show: true
+    borderColor: dimgray
+    strokeDashArray: 4
+  chart:
+    height: 192px
+  legend:
+    show: false
+  plotOptions:
+    bar:
+      borderRadius: 0
+  yaxis:
+    decimalsInFloat: 1
+    forceNiceScale: true
+  xaxis:
+    labels:
+      datetimeFormatter:
+        minute: HH:mm
+        day: ddd
+  tooltip:
+    shared: true
+    intersect: false
+all_series_config:
+  show:
+    offset_in_name: true
+    in_header: false
+    legend_value: false
+    extremas: true
+  color_threshold:
+    - value: 0
+      color: "#0000ff"
+    - value: 2.5
+      color: "#00ff00"
+    - value: 5
+      color: "#ffff00"
+    - value: 10
+      color: "#ff0000"
+    - value: 20
+      color: "#f80000"
+    - value: 50
+      color: "#000000"
+  opacity: 1
+  unit: ¢/kWh
+  float_precision: 1
+series:
+  - entity: sensor.se3_power_price_forecast
+    name: SE3
+    type: column
+    unit: ¢/kWh
+    color_threshold:
+      - value: 0
+        color: "#0000ff"
+      - value: 2.5
+        color: "#00ff00"
+      - value: 5
+        color: "#ffff00"
+      - value: 10
+        color: "#ff0000"
+      - value: 20
+        color: "#f80000"
+      - value: 50
+        color: "#000000"
+    data_generator: |
+      return entity.attributes.series.map((row) => {
+        return [new Date(row.ts_utc).getTime(), row.price_eur_mwh / 10];
+      });
+    show:
+      extremas: true
+      offset_in_name: false
