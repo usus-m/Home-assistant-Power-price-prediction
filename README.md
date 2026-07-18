@@ -1,28 +1,45 @@
 #  Power Price Forecast base on [eupowerprices.com](https://eupowerprices.com) 
 
-Pulls day-ahead / multi-day SE3 electricity price forecasts from
-[eupowerprices.com](https://eupowerprices.com) into Home Assistant, and charts
-them with the [apexcharts-card](https://github.com/RomRider/apexcharts-card)
-custom Lovelace card.
+Pulls 14 day electricity price forecasts from [eupowerprices.com](https://eupowerprices.com) into Home Assistant, and chartsthem with the [apexcharts-card](https://github.com/RomRider/apexcharts-card) custom Lovelace card.
 
 ## What's included
 
 - `packages/power_price.yaml` — REST sensor + template sensors
-  - `sensor.power_price_forecast` — current-hour price (EUR/MWh) with the
-    full forecast `series` array as an attribute
+  - `sensor.power_price_forecast` — current-hour price (EUR/MWh) with the full forecast `series` array as an attribute
   - `sensor.price_next_hour` — price one hour from now
-  - `sensor.peak_next_24h` / `sensor.low_next_24h` — high/low over the
-    next 24 hourly data points
-- `lovelace/apexchart.yaml` — an apexcharts-card config that charts the
-  full forecast window in ¢/kWh with color-coded price bands
+  - `sensor.peak_next_24h` / `sensor.low_next_24h` — high/low over the next 24 hourly data points
+- `lovelace/apexchart.yaml` — an apexcharts-card config that charts the full forecast window in ¢/kWh with color-coded price bands
 - `secrets.yaml.example` — placeholder for your API key
 
 ## Requirements
 
-- A [eupowerprices.com](https://eupowerprices.com) API key with SE3 access
-- [HACS](https://hacs.xyz/) with the
-  [apexcharts-card](https://github.com/RomRider/apexcharts-card) installed,
-  for the chart
+- A [eupowerprices.com](https://eupowerprices.com) API key with desire Area access 
+  Areas:
+  -   Nordics & Baltics: ltics
+        DK1 - Denmark West
+        DK2 - Denmark East
+        EE - Estonia
+        FI - Finland
+        NO1 -  Norway East
+        NO2 -  Norway South
+        NO3 -  Norway Central
+        NO4 -  Norway North
+        NO5 -  Norway West
+        SE1 -  Sweden North
+        SE2 -  Sweden North-Central
+        SE3 -  Sweden Central
+        SE4 -  Sweden South
+  -   Central & Western Europe
+        AT - Austria
+        BE - Belgium
+        CZ - Czechia
+        DE - Germany
+        FR - France
+        NL - Netherlands
+        PL - Poland
+        SK - Slovakia
+
+- [HACS](https://hacs.xyz/) with the   [apexcharts-card](https://github.com/RomRider/apexcharts-card) installed, for the chart
 
 ## Setup
 
