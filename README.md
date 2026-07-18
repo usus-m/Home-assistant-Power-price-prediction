@@ -35,9 +35,9 @@ custom Lovelace card.
 2. **Enable packages** in `configuration.yaml`, if not already:
 
    ```yaml
-  homeassistant:
-    packages:
-      forecast: !include  Forecast/power_price.yaml
+    homeassistant:
+      packages:
+        forecast: !include  Forecast/power_price.yaml
    ```
 
 3. **Copy** `Forecast/power_price.yaml` into your own / Create `Forecast/`
