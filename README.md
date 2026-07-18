@@ -1,4 +1,4 @@
-# Home Assistant: SE3 Power Price Forecast
+#  Power Price Forecast base on [eupowerprices.com](https://eupowerprices.com) 
 
 Pulls day-ahead / multi-day SE3 electricity price forecasts from
 [eupowerprices.com](https://eupowerprices.com) into Home Assistant, and charts
