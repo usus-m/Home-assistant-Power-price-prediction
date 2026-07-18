@@ -15,8 +15,8 @@ Pulls 14 day electricity price forecasts from [eupowerprices.com](https://eupowe
 
 - A [eupowerprices.com](https://eupowerprices.com) API key with desire Area access 
   Areas:
-  -   Nordics & Baltics: ltics
-        DK1 - Denmark West
+  -   Nordics & Baltics: 
+        **DK1** - Denmark West
         DK2 - Denmark East
         EE - Estonia
         FI - Finland
@@ -42,6 +42,13 @@ Pulls 14 day electricity price forecasts from [eupowerprices.com](https://eupowe
 - [HACS](https://hacs.xyz/) with the   [apexcharts-card](https://github.com/RomRider/apexcharts-card) installed, for the chart
 
 ## Setup
+0.  **Get your API key from eupowerprices**
+
+  Go to https://eupowerprices.com/api/login/ and write your email. \
+  Press Send Sign-in Link and confirm your email.\
+  After login go to https://eupowerprices.com/api/portal/ and request access for your Area.\
+  Wait until you receive approval. (may be few days) \
+  Generate  API Key
 
 1. **Add your API key** to your real `secrets.yaml` (do not commit this file):
 
