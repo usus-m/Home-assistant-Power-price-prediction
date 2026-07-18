@@ -5,7 +5,7 @@ Pulls day-ahead / multi-day SE3 electricity price forecasts from
 them with the [apexcharts-card](https://github.com/RomRider/apexcharts-card)
 custom Lovelace card.
 
-## What's included
+## What's  included
 
 - `packages/power_price.yaml` — REST sensor + template sensors
   - `sensor.power_price_forecast` — current-hour price (EUR/MWh) with the
