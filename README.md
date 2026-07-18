@@ -44,11 +44,11 @@ Pulls 14 day electricity price forecasts from [eupowerprices.com](https://eupowe
 ## Setup
 0.  **Get your API key from eupowerprices**
 
-  Go to https://eupowerprices.com/api/login/ and write your email. \
-  Press Send Sign-in Link and confirm your email.\
-  After login go to https://eupowerprices.com/api/portal/ and request access for your Area.\
-  Wait until you receive approval. (may be few days) \
-  Generate  API Key
+      Go to https://eupowerprices.com/api/login/ and write your email. \
+      Press Send Sign-in Link and confirm your email.\
+      After login go to https://eupowerprices.com/api/portal/ and request access for your Area.\
+      Wait until you receive approval. (may be few days) \
+      Generate  API Key
 
 1. **Add your API key** to your real `secrets.yaml` (do not commit this file):
 
