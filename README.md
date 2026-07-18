@@ -5,7 +5,7 @@ Pulls day-ahead / multi-day SE3 electricity price forecasts from
 them with the [apexcharts-card](https://github.com/RomRider/apexcharts-card)
 custom Lovelace card.
 
-## What's  included
+## What's included
 
 - `packages/power_price.yaml` — REST sensor + template sensors
   - `sensor.power_price_forecast` — current-hour price (EUR/MWh) with the
@@ -35,11 +35,12 @@ custom Lovelace card.
 2. **Enable packages** in `configuration.yaml`, if not already:
 
    ```yaml
-   homeassistant:
-     packages: !include_dir_named packages
+  homeassistant:
+    packages:
+      forecast: !include  Forecast/power_price.yaml
    ```
 
-3. **Copy** `packages/se3_power_price.yaml` into your own `packages/`
+3. **Copy** `Forecast/power_price.yaml` into your own / Create `Forecast/`
    directory (or merge its `sensor:`/`template:` keys into your existing
    config if you don't use packages).
 
@@ -47,8 +48,9 @@ custom Lovelace card.
    (or restart Home Assistant).
 
 5. **Verify**: Developer Tools → States → search
-   `sensor.se3_power_price_forecast`. State should be a real EUR/MWh number,
-   and the `series` attribute should contain the full forecast array.
+   `sensor.power_price_forecast`. State should be a real EUR/MWh number,
+   and the `series` attribute should contain the full forecast array for
+   the next 14 days.
 
 6. **Add the chart**: create a new Lovelace card → Manual → paste the
    contents of `lovelace/se3_apexchart.yaml`.
