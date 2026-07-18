@@ -7,13 +7,13 @@ custom Lovelace card.
 
 ## What's included
 
-- `packages/se3_power_price.yaml` — REST sensor + template sensors
-  - `sensor.se3_power_price_forecast` — current-hour price (EUR/MWh) with the
+- `packages/power_price.yaml` — REST sensor + template sensors
+  - `sensor.power_price_forecast` — current-hour price (EUR/MWh) with the
     full forecast `series` array as an attribute
-  - `sensor.se3_price_next_hour` — price one hour from now
-  - `sensor.se3_peak_next_24h` / `sensor.se3_low_next_24h` — high/low over the
+  - `sensor.price_next_hour` — price one hour from now
+  - `sensor.peak_next_24h` / `sensor.low_next_24h` — high/low over the
     next 24 hourly data points
-- `lovelace/se3_apexchart.yaml` — an apexcharts-card config that charts the
+- `lovelace/apexchart.yaml` — an apexcharts-card config that charts the
   full forecast window in ¢/kWh with color-coded price bands
 - `secrets.yaml.example` — placeholder for your API key
 
