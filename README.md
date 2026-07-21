@@ -18,34 +18,34 @@ Pulls 14 day electricity price forecasts from [eupowerprices.com](https://eupowe
 - A [eupowerprices.com](https://eupowerprices.com) API key with desire Area access 
   Areas:
   -   **Nordics:** \
-        **DK1** - Denmark West
-        **DK2** - Denmark East
-        **FI** - Finland
-        **NO1** - Norway East
-        **NO2** - Norway South
-        **NO3** - Norway Central
-        **NO4** - Norway North
-        **NO5** - Norway West
-        **SE1** - Sweden North
-        **SE2** - Sweden North-Central
-        **SE3** - Sweden Central
-        **SE4** - Sweden South
+            **DK1** - Denmark West
+            **DK2** - Denmark East
+            **FI** - Finland
+            **NO1** - Norway East
+            **NO2** - Norway South
+            **NO3** - Norway Central
+            **NO4** - Norway North
+            **NO5** - Norway West
+            **SE1** - Sweden North
+            **SE2** - Sweden North-Central
+            **SE3** - Sweden Central
+            **SE4** - Sweden South
   -   **Baltics:** \
-         **EE** - Estonia
-         **LT** - Lituania
-         **LV** - Latvia
+            **EE** - Estonia
+            **LT** - Lituania
+            **LV** - Latvia
   -   **Core:**\
-        **AT** - Austria
-        **BE** - Belgium
-        **CZ** - Czechia
-        **DE** - Germany
-        **FR** - France
-        **NL** - Netherlands
-        **PL** - Poland
-        **SK** - Slovakia
+            **AT** - Austria
+            **BE** - Belgium
+            **CZ** - Czechia
+            **DE** - Germany
+            **FR** - France
+            **NL** - Netherlands
+            **PL** - Poland
+            **SK** - Slovakia
   -   **Iberia:**\
-        **ES** - Spain
-        **PT** - Portugal
+            **ES** - Spain
+            **PT** - Portugal
 
 
 - [HACS](https://hacs.xyz/) with the   [apexcharts-card](https://github.com/RomRider/apexcharts-card) installed, for the chart
