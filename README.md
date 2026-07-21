@@ -2,6 +2,8 @@
 
 Pulls 14 day electricity price forecasts from [eupowerprices.com](https://eupowerprices.com) into Home Assistant, and chartsthem with the [apexcharts-card](https://github.com/RomRider/apexcharts-card) custom Lovelace card.
 
+![Apex Chart](images/Apex_Chart_Price.png)
+
 ## What's included
 
 - `packages/power_price.yaml` — REST sensor + template sensors
@@ -77,7 +79,7 @@ Pulls 14 day electricity price forecasts from [eupowerprices.com](https://eupowe
    the next 14 days.
 
 6. **Add the chart**: create a new Lovelace card → Manual → paste the
-   contents of `lovelace/se3_apexchart.yaml`.
+   contents of `lovelace/apexchart.yaml`.
 
 ## Notes
 
