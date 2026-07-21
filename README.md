@@ -17,7 +17,7 @@ Pulls 14 day electricity price forecasts from [eupowerprices.com](https://eupowe
 
 - A [eupowerprices.com](https://eupowerprices.com) API key with desire Area access 
   Areas:
-  -   **Nordics:**/
+  -   **Nordics:** \
         **DK1** - Denmark West
         **DK2** - Denmark East
         **FI** - Finland
@@ -30,7 +30,7 @@ Pulls 14 day electricity price forecasts from [eupowerprices.com](https://eupowe
         **SE2** - Sweden North-Central
         **SE3** - Sweden Central
         **SE4** - Sweden South
-  -   **Baltics:** /
+  -   **Baltics:** |
          **EE** - Estonia
          **LT** - Lituania
          **LV** - Latvia
